@@ -1,20 +1,36 @@
-import { FaHome } from "react-icons/fa";
-import { HiUserGroup } from "react-icons/hi";
-import { MdSettings } from "react-icons/md";
-import { FaChartBar } from "react-icons/fa";
+"use client";
+import { useState } from "react";
+import { Home, Users, BarChart3, Settings, Menu } from "lucide-react";
 
-export default function Home() {
+const Sidebar = () => {
+  const [active, setActive] = useState("Dashboard");
+
+  const menuItems = [
+    { name: "Dashboard", icon: <Home size={20} /> },
+    { name: "Users", icon: <Users size={20} /> },
+    { name: "Analytics", icon: <BarChart3 size={20} /> },
+    { name: "Settings", icon: <Settings size={20} /> },
+  ];
+
   return (
-    <main className="flex  min-h-screen bg-gray-100">
-      <nav className=" font-bold max-h-140 w-60 border-2 border-gray-600 px-3 py-3.5 border-r  ">
-        <h2 className="text-black text-2xl pb-3 " >Admin Panel</h2>
-        <ul>
-          <li className="text-black text-1xl flex gap-2  py-2 px-3"><FaHome className="text-1xl text-black-500 hover:text-blue-700" /> Dasboard</li>
-          <li className="text-black text-1xl flex gap-2 py-2 px-3"><HiUserGroup className="text-1xl text-black-500" />Users</li>
-          <li className="text-black text-1xl flex gap-2 py-2 px-3"> <FaChartBar className="text-1xl hover:text-black-400" />Analytics</li>
-          <li className="text-black text-1xl flex gap-2 py-2 px-3"><MdSettings className="text-1xl hover:text-black-400" />Settings</li>
-        </ul>
-      </nav>
-    </main>
+    <div className="w-64 min-h-screen bg-white border-r p-4">
+      <h2 className="text-xl font-semibold mb-6 text-black">Admin Panel</h2>
+      <ul>
+        {menuItems.map((item) => (
+          <li
+            key={item.name}
+            className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer text-1xl text-black ${
+              active === item.name ? "bg-gray-100 text-gray-900 font-medium" : "hover:bg-gray-100"
+            }`}
+            onClick={() => setActive(item.name)}
+          >
+            {item.icon}
+            {item.name}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
-}
+};
+
+export default Sidebar;
