@@ -1,36 +1,26 @@
 "use client";
-import { useState } from "react";
-import { Home, Users, BarChart3, Settings, Menu } from "lucide-react";
+import Sidebar from "./components/Slider";
+import StatsCard from "./components/StatsCard";
+import Chart from "./components/Chart";
+import Navbar from "./components/Navbar";
 
-const Sidebar = () => {
-  const [active, setActive] = useState("Dashboard");
-
-  const menuItems = [
-    { name: "Dashboard", icon: <Home size={20} /> },
-    { name: "Users", icon: <Users size={20} /> },
-    { name: "Analytics", icon: <BarChart3 size={20} /> },
-    { name: "Settings", icon: <Settings size={20} /> },
-  ];
-
+export default function Home() {
   return (
-    <div className="w-64 min-h-screen bg-white border-r p-4">
-      <h2 className="text-xl font-semibold mb-6 text-black">Admin Panel</h2>
-      <ul>
-        {menuItems.map((item) => (
-          <li
-            key={item.name}
-            className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer text-1xl text-black ${
-              active === item.name ? "bg-gray-100 text-gray-900 font-medium" : "hover:bg-gray-100"
-            }`}
-            onClick={() => setActive(item.name)}
-          >
-            {item.icon}
-            {item.name}
-          </li>
-        ))}
-      </ul>
+    <div className="flex">
+      <Sidebar />
+      <div className="flex-1 p-6 bg-gray-100 ">
+      <Navbar />
+        <div className="grid grid-cols-4 gap-4 mt-8">
+          <StatsCard title="Total Users" value="12,345" />
+          <StatsCard title="Active Users" value="8,234" />
+          <StatsCard title="Revenue" value="$45,678" />
+          <StatsCard title="Growth" value="+12.3%" />
+        </div>
+        <div className="mt-10">
+          <Chart />
+        </div>
+      </div>
     </div>
   );
-};
+}
 
-export default Sidebar;
