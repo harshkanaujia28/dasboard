@@ -13,7 +13,7 @@ export default function users () {
           <Sidebar/>
           <div className="flex-1 p-6 bg-gray-100 ">
           <Navbar/>
-          <h3 className="text-2xl font-semibold text-black pt-9 px-2"> Users</h3>
+          <h3 className="text-2xl font-semibold text-black text pt-7 px-2 py-3"> Users</h3>
           <table className="min-w-full border border-gray-200 rounded-lg shadow-md text-sm" >
         <thead className="bg-gray-100">
           <tr className="text-left text-gray-700">
