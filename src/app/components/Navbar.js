@@ -7,9 +7,9 @@ import { BsSun } from "react-icons/bs";
 const Navbar = () => {
     const { setIsOpen } = useSidebar();
   return (
-    <nav className="w-full flex items-center justify-between px-4 py-2 border-b">
+    <nav className="w-full flex items-center justify-between px-4 py-2 border-b ">
       {/* Left: Menu Icon */}
-      <button  onClick={() => setIsOpen(prev => !prev)} className="text-gray-600">
+      <button  onClick={() => setIsOpen(prev => !prev)} className="text-gray-600 ">
         <FiMenu size={20} />
       </button>
 
