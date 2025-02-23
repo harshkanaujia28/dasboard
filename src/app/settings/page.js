@@ -1,74 +1,96 @@
+"use client";
 import Slider from "../components/Slider";
 import Navbar from "../components/Navbar";
 import ToggleSwitch from "../components/ToggleSwitch";
+import { useEffect, useState } from "react";
 
-export default function settings() {
+export default function Settings() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect screen size
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="flex">
-      <Slider />
-      <div className="flex-1 p-6 bg-gray-100 ">
+    <div className="">
+      {/* Sidebar - Hidden on mobile unless toggled */}
+      {/* {!isMobile && <Slider />} */}
+     <Slider/>
+      <div className="flex-1 p-4 md:p-6 bg-gray-100 min-h-screen">
         <Navbar />
-        <h3 className="text-2xl font-semibold text-black  pt-7 px-2 py-3">
-          {" "}
+
+        <h3 className="text-2xl font-semibold text-black pt-5 px-2">
           Settings
         </h3>
-        <div className="p-8  bg-white shadow rounded-lg">
-          <h1 className="text-black">Profile Settings</h1>
+
+        {/* Profile Settings */}
+        <div className="p-6 md:p-8 bg-white shadow rounded-lg mt-4">
+          <h1 className="text-black text-lg md:text-xl">Profile Settings</h1>
           <p className="text-gray-500 text-sm pb-5">
             Manage your profile information
           </p>
-          <label htmlFor="name" className="text-black text-sm">
-            {" "}
+
+          <label htmlFor="name" className="text-black text-sm block">
             Name
           </label>
           <input
             type="text"
-            placeholder="name"
-            className="border border-gray-300 rounded-md p-2 w-full mt-2 mb-4"
+            placeholder="Name"
+            className="border border-gray-300 rounded-md p-2 w-full mt-2 mb-4 focus:outline-none focus:ring-2 focus:ring-gray-400"
           />
-          <label htmlFor="email" className="text-black text-sm">
-            {" "}
+
+          <label htmlFor="email" className="text-black text-sm block">
             Email
           </label>
           <input
             type="text"
-            placeholder="eamil"
-            className="border border-gray-300 rounded-md p-2 w-full mt-2"
+            placeholder="Email"
+            className="border border-gray-300 rounded-md p-2 w-full mt-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
           />
         </div>
-        <div className="p-8 mt-4  bg-white shadow rounded-lg">
-          <h1 className="text-black">Notifications</h1>
+
+        {/* Notifications */}
+        <div className="p-6 md:p-8 bg-white shadow rounded-lg mt-4">
+          <h1 className="text-black text-lg md:text-xl">Notifications</h1>
           <p className="text-gray-500 text-sm pb-5">
             Manage your notification preferences
           </p>
-          <div className="flex justify-between">
-            <div>
-              <h1 className="text-black text-sm ">Email Notifications</h1>
-              <p className="text-gray-500 text-sm pb-5">
+
+          {/* Notification Items */}
+          <div className="flex justify-between items-center flex-col md:flex-row gap-4 md:gap-0">
+            <div className="w-full">
+              <h1 className="text-black text-sm">Email Notifications</h1>
+              <p className="text-gray-500 text-sm">
                 Receive email notifications about account activity
               </p>
             </div>
-            <div>
-              <ToggleSwitch />
-            </div>
+            <ToggleSwitch />
           </div>
-          <div className="flex justify-between">
-            <div>
-              <h1 className="text-black text-sm ">Marketing Emails</h1>
-              <p className="text-gray-500 text-sm pb-5">
+
+          <div className="flex justify-between items-center flex-col md:flex-row gap-4 md:gap-0 mt-4">
+            <div className="w-full">
+              <h1 className="text-black text-sm">Marketing Emails</h1>
+              <p className="text-gray-500 text-sm">
                 Receive emails about new features and updates
               </p>
             </div>
-            <div>
-              <ToggleSwitch />
-            </div>
+            <ToggleSwitch />
           </div>
-         
         </div>
-        <div className="flex justify-end mt-4 gap-2">
-            <button className="bg-white text-gray-600 px-4 py-2 rounded ml-2">Cancel</button>
-            <button className="bg-black hover:bg-gray-500 text-white px-4 py-2 rounded">Save changes</button>
-          </div>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row justify-end mt-4 gap-2">
+          <button className="bg-white text-gray-600 px-4 py-2 rounded w-full sm:w-auto border border-gray-300 hover:bg-gray-200">
+            Cancel
+          </button>
+          <button className="bg-black hover:bg-gray-600 text-white px-4 py-2 rounded w-full sm:w-auto">
+            Save changes
+          </button>
+        </div>
       </div>
     </div>
   );
