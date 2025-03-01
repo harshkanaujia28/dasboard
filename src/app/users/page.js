@@ -16,7 +16,7 @@ export default function Users() {
         <Sidebar />
       </div>
 
-      <div className="flex-1 p-4 md:p-6 bg-gray-100 min-h-screen">
+      <div className="flex-1 p-4 md:p-6  min-h-screen">
         <Navbar />
 
         <h3 className="text-2xl font-semibold text-black pt-5 px-2">
@@ -24,7 +24,7 @@ export default function Users() {
         </h3>
 
         {/* Table - Scrollable on small screens */}
-        <div className="overflow-x-auto bg-white shadow-md rounded-lg mt-4">
+        <div className="overflow-x-auto  shadow-md rounded-lg mt-4">
           <table className="min-w-full border border-gray-200 text-sm">
             <thead className="bg-gray-100">
               <tr className="text-left text-gray-700">

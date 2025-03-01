@@ -13,8 +13,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        darkTheme: '#11001F',
       },
     },
   },
+ darkMode: 'selector',
   plugins: [],
 };

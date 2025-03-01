@@ -1,8 +1,8 @@
 const StatsCard = ({ title, value }) => {
     return (
-      <div className="p-5  bg-white shadow rounded-lg">
-        <h3 className="text-sm text-black">{title}</h3>
-        <p className="text-2xl text-black font-bold">{value}</p>
+      <div className="p-5 shadow border rounded-lg">
+        <h3 className="text-sm ">{title}</h3>
+        <p className="text-2xl  font-bold">{value}</p>
       </div>
     );
   };

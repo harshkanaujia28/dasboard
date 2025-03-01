@@ -16,25 +16,25 @@ export default function Settings() {
   }, []);
 
   return (
-    <div className="">
+    <div className="flex">
       {/* Sidebar - Hidden on mobile unless toggled */}
       {/* {!isMobile && <Slider />} */}
      <Slider/>
-      <div className="flex-1 p-4 md:p-6 bg-gray-100 min-h-screen">
+      <div className="flex-1 p-4 md:p-6 min-h-screen">
         <Navbar />
 
-        <h3 className="text-2xl font-semibold text-black pt-5 px-2">
+        <h3 className="text-2xl font-semibold  pt-5 px-2">
           Settings
         </h3>
 
         {/* Profile Settings */}
-        <div className="p-6 md:p-8 bg-white shadow rounded-lg mt-4">
+        <div className="p-6 md:p-8  shadow rounded-lg mt-4">
           <h1 className="text-black text-lg md:text-xl">Profile Settings</h1>
           <p className="text-gray-500 text-sm pb-5">
             Manage your profile information
           </p>
 
-          <label htmlFor="name" className="text-black text-sm block">
+          <label htmlFor="name" className=" text-sm block">
             Name
           </label>
           <input
@@ -43,7 +43,7 @@ export default function Settings() {
             className="border border-gray-300 rounded-md p-2 w-full mt-2 mb-4 focus:outline-none focus:ring-2 focus:ring-gray-400"
           />
 
-          <label htmlFor="email" className="text-black text-sm block">
+          <label htmlFor="email" className=" text-sm block">
             Email
           </label>
           <input
@@ -54,8 +54,8 @@ export default function Settings() {
         </div>
 
         {/* Notifications */}
-        <div className="p-6 md:p-8 bg-white shadow rounded-lg mt-4">
-          <h1 className="text-black text-lg md:text-xl">Notifications</h1>
+        <div className="p-6 md:p-8 shadow rounded-lg mt-4">
+          <h1 className=" text-lg md:text-xl">Notifications</h1>
           <p className="text-gray-500 text-sm pb-5">
             Manage your notification preferences
           </p>
@@ -63,7 +63,7 @@ export default function Settings() {
           {/* Notification Items */}
           <div className="flex justify-between items-center flex-col md:flex-row gap-4 md:gap-0">
             <div className="w-full">
-              <h1 className="text-black text-sm">Email Notifications</h1>
+              <h1 className=" text-sm">Email Notifications</h1>
               <p className="text-gray-500 text-sm">
                 Receive email notifications about account activity
               </p>
@@ -73,7 +73,7 @@ export default function Settings() {
 
           <div className="flex justify-between items-center flex-col md:flex-row gap-4 md:gap-0 mt-4">
             <div className="w-full">
-              <h1 className="text-black text-sm">Marketing Emails</h1>
+              <h1 className=" text-sm">Marketing Emails</h1>
               <p className="text-gray-500 text-sm">
                 Receive emails about new features and updates
               </p>

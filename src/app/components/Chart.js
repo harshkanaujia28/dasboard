@@ -12,8 +12,8 @@ const data = [
 
 const Chart = () => {
   return (
-    <div className="p-4 bg-white shadow rounded-lg">
-      <h3 className="text-lg font-semibold text-black">User Growth Overview</h3>
+    <div className="p-4  shadow rounded-lg border">
+      <h3 className="text-lg font-semibold ">User Growth Overview</h3>
       <p className="text-sm text-gray-500">Monthly active users over time</p>
       <ResponsiveContainer width="100%" height={330}>
         <LineChart data={data}>

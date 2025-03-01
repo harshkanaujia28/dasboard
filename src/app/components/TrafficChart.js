@@ -12,8 +12,8 @@ const data = [
 
 const TrafficChart = () => {
   return (
-    <div className="p-4 bg-white shadow rounded-lg">
-      <h2 className="text-lg font-semibold text-black">Traffic Overview</h2>
+    <div className="p-4 shadow rounded-lg">
+      <h2 className="text-lg font-semibold ">Traffic Overview</h2>
       <p className="text-sm text-gray-500">Monthly website traffic</p>
       <ResponsiveContainer width="100%" height={330}>
         <BarChart data={data}>

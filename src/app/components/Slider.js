@@ -26,7 +26,7 @@ const Sidebar = () => {
 
     return (
         <div
-            className={`h-screen bg-white border-r transition-all duration-300 overflow-hidden
+            className={`h-screen  border-r transition-all duration-300 overflow-hidden
             ${isMobile ? (isOpen ? "w-64" : "w-0") : "w-64"} 
             fixed md:relative`}
         >
@@ -44,10 +44,10 @@ const Sidebar = () => {
                     <li key={item.name} onClick={() => setActive(item.name)}>
                         <Link
                             href={item.path}
-                            className={`flex items-center gap-2 p-3 mr-2 rounded-lg cursor-pointer text-sm text-black px-5 ${
+                            className={`flex items-center gap-2 p-3 mr-2 rounded-lg cursor-pointer text-sm  px-5 ${
                                 active === item.name
                                     ? "bg-gray-100 text-gray-900 font-medium"
-                                    : "hover:bg-gray-100 mt-1"
+                                    : "hover:bg-gray-100 mt-1 "
                             }`}
                         >
                             {item.icon}
