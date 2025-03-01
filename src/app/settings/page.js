@@ -14,6 +14,26 @@ export default function Settings() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  const [isDarkMode, setIsDarkMode] = useState(true)
+  useEffect(() => {
+     if(localStorage.theme === "dark" || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+       setIsDarkMode(true)
+     }
+  
+    return () => {
+      setIsDarkMode(false)
+    }
+  },[])
+  
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.removeItem("theme");
+    }
+  }, [isDarkMode]); 
 
   return (
     <div className="flex">
@@ -21,29 +41,29 @@ export default function Settings() {
       {/* {!isMobile && <Slider />} */}
      <Slider/>
       <div className="flex-1 p-4 md:p-6 min-h-screen">
-        <Navbar />
+        <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
-        <h3 className="text-2xl font-semibold  pt-5 px-2">
+        <h3 className="text-2xl font-semibold text-black dark:text-white pt-5 px-2">
           Settings
         </h3>
 
         {/* Profile Settings */}
-        <div className="p-6 md:p-8  shadow rounded-lg mt-4">
-          <h1 className="text-black text-lg md:text-xl">Profile Settings</h1>
+        <div className="p-6 md:p-8 border border-gray-400 shadow rounded-lg mt-4">
+          <h1 className="text-black text-lg  dark:text-white md:text-xl">Profile Settings</h1>
           <p className="text-gray-500 text-sm pb-5">
             Manage your profile information
           </p>
 
-          <label htmlFor="name" className=" text-sm block">
+          <label htmlFor="name" className=" text-sm block text-gray-600">
             Name
           </label>
           <input
             type="text"
             placeholder="Name"
-            className="border border-gray-300 rounded-md p-2 w-full mt-2 mb-4 focus:outline-none focus:ring-2 focus:ring-gray-400"
+            className="border border-gray-300 rounded-md p-2 w-full mt-2 mb-4 focus:outline-none focus:ring-2 focus:ring-gray-400 text-gray-600"
           />
 
-          <label htmlFor="email" className=" text-sm block">
+          <label htmlFor="email" className=" text-sm block text-gray-600">
             Email
           </label>
           <input
@@ -54,8 +74,8 @@ export default function Settings() {
         </div>
 
         {/* Notifications */}
-        <div className="p-6 md:p-8 shadow rounded-lg mt-4">
-          <h1 className=" text-lg md:text-xl">Notifications</h1>
+        <div className="p-6 md:p-8 shadow border border-gray-400 rounded-lg mt-4">
+          <h1 className=" text-lg md:text-xl text-black dark:text-white">Notifications</h1>
           <p className="text-gray-500 text-sm pb-5">
             Manage your notification preferences
           </p>
@@ -63,7 +83,7 @@ export default function Settings() {
           {/* Notification Items */}
           <div className="flex justify-between items-center flex-col md:flex-row gap-4 md:gap-0">
             <div className="w-full">
-              <h1 className=" text-sm">Email Notifications</h1>
+              <h1 className=" text-sm text-gray-800 dark:text-white">Email Notifications</h1>
               <p className="text-gray-500 text-sm">
                 Receive email notifications about account activity
               </p>
@@ -73,7 +93,7 @@ export default function Settings() {
 
           <div className="flex justify-between items-center flex-col md:flex-row gap-4 md:gap-0 mt-4">
             <div className="w-full">
-              <h1 className=" text-sm">Marketing Emails</h1>
+              <h1 className=" text-sm  text-gray-800 dark:text-white">Marketing Emails</h1>
               <p className="text-gray-500 text-sm">
                 Receive emails about new features and updates
               </p>

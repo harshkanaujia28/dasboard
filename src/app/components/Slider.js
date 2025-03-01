@@ -31,7 +31,7 @@ const Sidebar = () => {
             fixed md:relative`}
         >
             <div className="flex justify-between items-center px-3 py-3">
-                <h2 className="text-xl font-semibold text-black">Admin Panel</h2>
+                <h2 className="text-xl font-semibold text-black dark:text-white">Admin Panel</h2>
                 {/* Show close icon only on mobile */}
                 {isMobile && isOpen && (
                     <button onClick={() => setIsOpen(false)} className="text-gray-600">
@@ -47,7 +47,7 @@ const Sidebar = () => {
                             className={`flex items-center gap-2 p-3 mr-2 rounded-lg cursor-pointer text-sm  px-5 ${
                                 active === item.name
                                     ? "bg-gray-100 text-gray-900 font-medium"
-                                    : "hover:bg-gray-100 mt-1 "
+                                    : "hover:bg-gray-100 mt-1 text-gray-800  dark:text-white" 
                             }`}
                         >
                             {item.icon}

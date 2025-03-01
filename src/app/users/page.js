@@ -1,5 +1,7 @@
+"use client";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Slider";
+import { useState, useEffect } from "react";
 
 export default function Users() {
   const userdata = [
@@ -8,6 +10,26 @@ export default function Users() {
     { username: "Mike Johnson", email: "mike@example.com", role: "User", status: "active" },
     { username: "Harsh Kumar", email: "harsh@example.com", role: "admin", status: "active" },
   ];
+  const [isDarkMode, setIsDarkMode] = useState(true)
+  useEffect(() => {
+     if(localStorage.theme === "dark" || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+       setIsDarkMode(true)
+     }
+  
+    return () => {
+      setIsDarkMode(false)
+    }
+  },[])
+  
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.removeItem("theme");
+    }
+  }, [isDarkMode]); 
 
   return (
     <div className="flex">
@@ -17,9 +39,9 @@ export default function Users() {
       </div>
 
       <div className="flex-1 p-4 md:p-6  min-h-screen">
-        <Navbar />
+        <Navbar   isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
-        <h3 className="text-2xl font-semibold text-black pt-5 px-2">
+        <h3 className="text-2xl font-semibold text-black dark:text-white pt-5 px-2">
           Users
         </h3>
 
